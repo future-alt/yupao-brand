@@ -1,0 +1,839 @@
+/* === 鱼泡直聘品牌资产网站 === */
+:root {
+    --brand-blue: #1A83FF;
+    --brand-yellow: #FECF05;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666;
+    --bg-light: #f5f6f8;
+    --bg-white: #ffffff;
+    --sidebar-width: 260px;
+    --border-color: #e8e8e8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: auto; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC',
+        'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-light);
+    line-height: 1.6;
+}
+
+/* === Sidebar === */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--bg-white);
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 28px 20px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+}
+
+.sidebar-logo {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    object-fit: cover;
+    transform: scale(1.25);
+    transform-origin: center;
+    align-self: center;
+}
+
+.sidebar-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    margin-left: -4px;
+}
+
+.sidebar-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    line-height: 1.2;
+}
+
+.sidebar-header .version {
+    font-size: 11px;
+    color: var(--text-secondary);
+    display: block;
+    line-height: 1.2;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 12px 0;
+}
+
+.nav-item {
+    list-style: none;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+}
+
+.nav-icon-sm {
+    width: 16px;
+    height: 16px;
+    margin: 0 1px;
+}
+
+.nav-icon-font {
+    transform: translateY(-1px);
+}
+
+.nav-text {
+    flex: 1;
+}
+
+.nav-link:hover {
+    background: var(--bg-light);
+    color: var(--brand-blue);
+}
+
+.nav-link.active {
+    color: var(--brand-blue);
+    background: var(--bg-light);
+    font-weight: 500;
+}
+
+.nav-parent {
+    font-weight: 500;
+}
+
+.nav-parent .arrow {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.25s ease;
+    margin-left: auto;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.nav-parent .arrow.collapsed {
+    transform: rotate(-90deg);
+}
+
+.nav-link:hover .arrow,
+.nav-link.active .arrow {
+    color: var(--brand-blue);
+}
+
+.nav-sub {
+    list-style: none;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.nav-sub.open {
+    max-height: 400px;
+}
+
+.nav-sub .nav-link {
+    padding: 8px 20px 8px 32px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.nav-sub .nav-link:hover,
+.nav-sub .nav-link.active {
+    color: var(--brand-blue);
+}
+
+/* === Menu Toggle === */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 200;
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* === Main Content === */
+.content {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+}
+
+/* === Hero / Cover === */
+.hero-section {
+    padding: 0;
+}
+
+.hero-section .full-image {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* === Page Sections === */
+.page-section {
+    padding: 48px 40px 0;
+}
+
+/* === Sections === */
+.section {
+    padding: 48px 40px;
+    border-bottom: 1px solid var(--border-color);
+    background: #f7f8fa;
+    margin-bottom: 2px;
+}
+
+/* 内容容器 - 统一宽度 1280px 居中 */
+.section-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* 下载和欢迎区域保持白色背景 */
+#welcome,
+#logo-download,
+#font-download,
+#pdf-download {
+    background: var(--bg-white);
+}
+
+#pdf-download,
+#logo-download,
+#font-download {
+    padding: 80px 40px;
+}
+
+#welcome {
+    background: linear-gradient(180deg, #ffffff 0%, #E0F3FF 100%);
+}
+
+.section-header {
+    margin-bottom: 32px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--brand-blue);
+    display: inline-block;
+}
+
+.section-header-page {
+    margin-bottom: 24px;
+}
+
+.section-number {
+    display: block;
+    font-size: 16px;
+    color: var(--brand-blue);
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 4px;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.section-desc {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+/* === Image List === */
+.image-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.full-image {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* 单张页（封面、前言、目录）也限制最大宽度 */
+.page-section .full-image {
+    max-width: 100%;
+}
+
+/* === Download Grid === */
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.download-card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-white);
+    transition: box-shadow 0.2s;
+}
+
+.download-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.download-preview {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: #f9f9f9;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.download-preview.dark-bg {
+    background: #2a2a2a;
+}
+
+.download-preview img {
+    max-width: 80%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.download-info {
+    padding: 16px 20px;
+}
+
+.download-info h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.download-btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--brand-blue);
+    background: rgba(26, 131, 255, 0.08);
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background: var(--brand-blue);
+    color: white;
+}
+
+.btn-ai {
+    color: #e67e22;
+    background: rgba(230, 126, 34, 0.08);
+}
+
+.btn-ai:hover {
+    background: #e67e22;
+    color: white;
+}
+
+.btn-download-all {
+    padding: 10px 24px;
+    font-size: 14px;
+    background: var(--brand-blue);
+    color: white;
+}
+
+.btn-download-all:hover {
+    background: #0066dd;
+    color: white;
+}
+
+.btn-ai-all {
+    background: #C53030;
+}
+
+.btn-ai-all:hover {
+    background: #A82828;
+    color: white;
+}
+
+.batch-download-btns {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 56px;
+}
+
+/* === Font Download === */
+.font-grid {
+    grid-template-columns: 1fr;
+}
+
+.font-card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.font-preview {
+    width: 240px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+    border-right: 1px solid var(--border-color);
+    padding: 24px;
+}
+
+.font-preview-text {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.font-preview-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.font-card .download-info h4 {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.font-card .download-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px 32px;
+}
+
+.font-meta {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+/* === Footer === */
+.footer {
+    padding: 40px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.footer p { margin: 4px 0; }
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .menu-toggle { display: block; }
+    .content { margin-left: 0; }
+    .section { padding: 32px 20px; }
+}
+
+@media (max-width: 768px) {
+    .download-grid { grid-template-columns: 1fr; }
+    .section-header h2 { font-size: 22px; }
+}
+
+/* === Scrollbar === */
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+/* === Lightbox === */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 92%;
+    max-height: 92%;
+    object-fit: contain;
+    border-radius: 4px;
+    transition: opacity 0.3s;
+}
+
+/* Loader */
+.lightbox-loader {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: white;
+    font-size: 14px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255,255,255,0.2);
+    border-top-color: var(--brand-blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 左右切换箭头 */
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    user-select: none;
+}
+
+.lightbox-arrow:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.lightbox-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.lightbox-prev {
+    left: 24px;
+    padding-right: 4px;
+}
+
+.lightbox-next {
+    right: 24px;
+    padding-left: 4px;
+}
+
+/* 页码 */
+.lightbox-counter {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.8);
+    font-size: 13px;
+    font-family: 'Roboto', monospace;
+    background: rgba(0,0,0,0.4);
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+    .lightbox-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 26px;
+    }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+}
+
+/* === Welcome Section === */
+.welcome-section {
+    padding: 240px 60px 160px;
+    background: linear-gradient(180deg, #ffffff 0%, #E0F3FF 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.welcome-title {
+    font-size: 96px;
+    font-weight: 900;
+    color: var(--brand-blue);
+    line-height: 1;
+    margin-bottom: 32px;
+    letter-spacing: -3px;
+}
+
+.welcome-lead {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+.welcome-desc {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    margin-bottom: 56px;
+}
+
+.welcome-subtitle {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    padding-left: 14px;
+    border-left: 5px solid var(--brand-blue);
+    line-height: 1;
+}
+
+.welcome-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 56px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.welcome-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 28px;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 0;
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.welcome-list li:hover {
+    box-shadow: 0 4px 16px rgba(26, 131, 255, 0.08);
+    transform: translateY(-1px);
+}
+
+.welcome-list-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--brand-blue);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-list strong {
+    display: block;
+    font-size: 19px;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.welcome-list p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.welcome-note {
+    background: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    margin-top: 32px;
+    opacity: 0.7;
+}
+
+.welcome-note strong {
+    display: block;
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.welcome-note p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .welcome-section { padding: 48px 20px; }
+    .welcome-title { font-size: 64px; }
+    .welcome-lead { font-size: 22px; }
+    .welcome-desc { font-size: 15px; }
+    .welcome-list { grid-template-columns: 1fr; }
+}
+
+/* === LOGO 分类 === */
+.logo-category {
+    margin-bottom: 48px;
+}
+
+.logo-category:last-child {
+    margin-bottom: 0;
+}
+
+.category-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 4px solid var(--brand-blue);
+    line-height: 1;
+}
+
+/* === 字体分类描述 === */
+.category-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: -12px 0 20px;
+}
+
+.font-preview-box {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 60px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.font-preview-box .font-preview-text {
+    font-size: 64px;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+/* === PDF 模块 === */
+#pdf-download {
+    background: var(--bg-white);
+}
+
+.pdf-cover {
+    margin-top: 32px;
+    max-width: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.pdf-cover-link {
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+
+.pdf-cover-link img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.pdf-cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.pdf-cover-overlay span {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.pdf-cover-link:hover .pdf-cover-overlay {
+    opacity: 1;
+}
+
+.pdf-cover-link:hover img {
+    transform: scale(1.02);
+}
+
+.btn-preview {
+    background: #f0f0f0;
+    color: var(--text-primary);
+}
+
+.btn-preview:hover {
+    background: #e0e0e0;
+    color: var(--text-primary);
+}
