@@ -165,7 +165,9 @@ document.addEventListener('keydown', (e) => {
 
 // === VIS 图片点击放大（使用高清图，全部图片为一组）===
 const visImgs = document.querySelectorAll('.full-image');
-const visGroup = Array.from(visImgs).map(img => img.src.replace('/JPG/', '/JPG-hd/'));
+const visGroup = Array.from(visImgs).map(img => 
+    img.src.replace('/JPG/', '/JPG-hd/').replace(/\.png$/i, '.jpg')
+);
 visImgs.forEach((img, idx) => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', () => openLightbox(visGroup, idx));
